@@ -465,16 +465,23 @@ var Truck = function(owner,currentStation) {
  */
 var GameUtils = {};
 /**
- * Indique le nombre de tour necessaire à un camion pour rejoindre une station
+ * Indique le nombre de tour necessaire à un camion pour aller d'une station à une autre
  * @method getTravelDuration
- * @param	source {Truck} le camion
+ * @param	source {BikeStation} la station d'origine
  * @param   target {BikeStation} la station de destination
+ * @param   map {MapData} la map
  * @return	result {Int} le nombre de tour
  * @static
  */
-GameUtils.getTravelDuration = function (source, target){
-    var result = 1000;
-    result = Math.ceil( GameUtil.getDistanceBetween( source.position, target.position) / Game.TRUCK_SPEED);
+GameUtils.getTravelDuration = function (source,target,map){
+    var result = 0;
+    var p = GameUtils.getPath(source,target,map);
+    var _g1 = 0;
+    var _g = p.get_length() - 1;
+    while(_g1 < _g) {
+        var i = _g1++;
+        result += Math.ceil(GameUtils.getDistanceBetween(p.getItemAt(i),p.getItemAt(i + 1)) / Game.TRUCK_SPEED);
+    }
     return result;
 }
 
