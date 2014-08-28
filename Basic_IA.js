@@ -475,7 +475,7 @@ var GameUtils = {};
  */
 GameUtils.getTravelDuration = function (source,target,map){
     var result = 0;
-    var p = GameUloadOrdertils.getPath(source,target,map);
+    var p = GameUtils.getPath(source,target,map);
     var _g1 = 0;
     var _g = p.get_length() - 1;
     while(_g1 < _g) {
