@@ -475,7 +475,7 @@ var GameUtils = {};
  */
 GameUtils.getTravelDuration = function (source,target,map){
     var result = 0;
-    var p = GameUtils.getPath(source,target,map);
+    var p = GameUloadOrdertils.getPath(source,target,map);
     var _g1 = 0;
     var _g = p.get_length() - 1;
     while(_g1 < _g) {
@@ -731,7 +731,7 @@ Path.prototype = {
         return HxOverrides.remove(this._content,item);
     }
     ,copy: function() {
-        return new com.tamina.bikewar.data.Path(this._content.slice());
+        return new Path(this._content.slice());
     }
     ,get_length: function() {
         return this._content.length;
